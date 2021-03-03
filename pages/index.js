@@ -1,4 +1,13 @@
-import { Container, Heading, Link, Tabs, TabList, Tab, TabPanels, TabPanel } from "@chakra-ui/react";
+import {
+  Container,
+  Heading,
+  Link,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
+} from "@chakra-ui/react";
 import Head from "next/head";
 import Layout from "@comp/layout";
 import Experiences from "@comp/experiences";
@@ -16,20 +25,20 @@ export default function Home({ experiences, repos }) {
 
       <Layout>
         <Container maxWidth="container.lg" mt="56">
-          <Heading as="h1" fontWeight="medium">
-            Hello I'm Oktay 🖐
-          </Heading>
-          <Heading as="p" fontWeight="regular" mt="4" color="GrayText">
-            I'm currently frontend team lead at{" "}
+          <Heading as="h1">Hello I'm Oktay 🖐</Heading>
+          <Heading as="p" maxWidth="container.md" mt="4" color="GrayText">
+            Frontend developer who lives in Istanbul,
+            Graphic Designer and UI Design enthusiast.
+            Currently frontend team lead at{" "}
             <Link href="https://akinon.com" target="_blank">
               Akinon
             </Link>
           </Heading>
-
+          
           <Tabs variant="soft-rounded" mt="36" colorScheme="yellow">
             <TabList>
-              <Tab>Experiences</Tab>
-              <Tab>Repostories</Tab>
+              <Tab fontWeight="medium">Experiences</Tab>
+              <Tab fontWeight="medium">Repostories</Tab>
             </TabList>
             <TabPanels py="8">
               <TabPanel>
@@ -39,7 +48,7 @@ export default function Home({ experiences, repos }) {
                 <Repos repos={repos} />
               </TabPanel>
             </TabPanels>
-          </Tabs>  
+          </Tabs>
         </Container>
       </Layout>
     </div>
