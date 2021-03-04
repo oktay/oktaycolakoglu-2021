@@ -1,4 +1,5 @@
 import Header from '@comp/header';
+import Footer from '@comp/footer';
 
 function Layout({ children }) {
   return (
@@ -6,6 +7,8 @@ function Layout({ children }) {
       <Header />
 
       <main>{children}</main>
+
+      <Footer />
     </>
   );
 }
