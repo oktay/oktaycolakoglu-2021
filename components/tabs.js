@@ -22,7 +22,7 @@ function HomeTabs({ experiences, repos, bookmarks }) {
           <Tab fontWeight="medium">
             <BiGitBranch />{' '}
             <Text ml="2" display={{ base: tabIndex === 1 ? 'block' : 'none', md: 'block' }}>
-              Repostroies
+              Repositories
             </Text>
           </Tab>
           <Tab fontWeight="medium">
