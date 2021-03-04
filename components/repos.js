@@ -4,7 +4,14 @@ import { colors } from '@lib/colors';
 
 function RepoTitle({ url, isFork, children }) {
   return (
-    <Link href={url} isExternal fontWeight="medium" display="flex" alignItems="center">
+    <Link
+      href={url}
+      isExternal
+      fontWeight="medium"
+      display="flex"
+      alignItems="center"
+      _hover={{ textDecoration: 'none' }}
+    >
       <BiBook />
       <Text ml="1">{children}</Text>
       {isFork && (
@@ -30,7 +37,14 @@ function RepoLang({ lang }) {
 
 function RepoCard({ repo }) {
   return (
-    <Box key={repo.id} boxShadow="xs" p="6" bg="whiteAlpha.50" border="GrayText" borderRadius="md">
+    <Box
+      key={repo.id}
+      boxShadow="xs"
+      p={{ base: 2, md: 6 }}
+      bg="whiteAlpha.50"
+      border="GrayText"
+      borderRadius="md"
+    >
       <RepoTitle url={repo.html_url} isFork={repo.fork}>
         {repo.name}
       </RepoTitle>
@@ -38,7 +52,7 @@ function RepoCard({ repo }) {
         {repo.description}
       </Text>
       {repo.homepage && (
-        <Link href={repo.homepage} display="block">
+        <Link href={repo.homepage} display="block" isExternal>
           {repo.homepage}
         </Link>
       )}
@@ -49,7 +63,7 @@ function RepoCard({ repo }) {
 
 function Repos({ repos }) {
   return (
-    <Grid gridTemplateColumns={{ base: '1fr', lg: 'repeat(2, 1fr)' }} gap="16">
+    <Grid gridTemplateColumns={{ base: '1fr', lg: 'repeat(2, 1fr)' }} gap={{ base: '8', md: '12' }}>
       {repos.map((repo) => (
         <RepoCard key={repo.id} repo={repo} />
       ))}

@@ -1,6 +1,18 @@
-import { Box, Container, Flex, Link, Stack, useColorMode, IconButton } from '@chakra-ui/react';
-import { BiLinkExternal, BiSun, BiMoon } from 'react-icons/bi';
-
+import {
+  Avatar,
+  Box,
+  Container,
+  Flex,
+  Link,
+  useColorMode,
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Button,
+} from '@chakra-ui/react';
+import { BiLinkExternal, BiSun, BiMoon, BiChevronDown } from 'react-icons/bi';
 import RouterLink from 'next/link';
 
 function Header() {
@@ -18,45 +30,51 @@ function Header() {
       url: 'https://www.linkedin.com/in/oktaycolakoglu/',
       label: 'Linkedin',
     },
+    {
+      url: 'https://dribbble.com/oktaycolakoglu',
+      label: 'Dribbble',
+    },
   ];
   return (
-    <Container py="4" maxWidth="container.lg" display="flex" justifyContent="space-between">
-      <Stack direction="row" spacing="6">
-        <RouterLink href="/">
-          <Flex
-            as={Link}
-            alignItems="center"
-            textDecoration="none"
-            _hover={{ textDecoration: 'none' }}
-            color="GrayText"
-            href="/"
+    <Box
+      position="sticky"
+      top="0"
+      bg={colorMode === 'dark' ? '#13141a' : '#fff'}
+      borderBottom="1px solid"
+      borderColor={colorMode === 'dark' ? 'gray.900' : 'gray.100'}
+      zIndex="sticky"
+    >
+      <Container py="4" maxWidth="container.lg" display="flex" justifyContent="space-between">
+        <Menu>
+          <MenuButton
+            as={Button}
+            leftIcon={<Avatar src="/avatar.jpg" size="xs" />}
+            rightIcon={<BiChevronDown />}
+            fontWeight="medium"
           >
             Home
-          </Flex>
-        </RouterLink>
-        {menu.map(({ url, label }) => (
-          <Flex
-            key={url}
-            as={Link}
-            href={url}
-            isExternal
-            textDecoration="none"
-            _hover={{ textDecoration: 'none' }}
-            alignItems="center"
-          >
-            {label} <Box children={<BiLinkExternal />} ml="2" />
-          </Flex>
-        ))}
-      </Stack>
-      <IconButton
-        onClick={toggleColorMode}
-        variant="ghost"
-        icon={colorMode === 'light' ? <BiMoon /> : <BiSun />}
-        aria-label="Toggle Theme"
-      >
-        Toggle Theme
-      </IconButton>
-    </Container>
+          </MenuButton>
+          <MenuList background={colorMode === 'dark' ? '#13141a' : '#fff'}>
+            <RouterLink href="/">
+              <MenuItem as={Link}>
+                <Flex alignItems="center">Home</Flex>
+              </MenuItem>
+            </RouterLink>
+            {menu.map(({ url, label }) => (
+              <MenuItem as={Link} href={url} key={url} icon={<BiLinkExternal />} isExternal>
+                {label}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </Menu>
+        <IconButton
+          onClick={toggleColorMode}
+          icon={colorMode === 'light' ? <BiMoon /> : <BiSun />}
+          aria-label="Toggle theme"
+          title="Toggle theme"
+        />
+      </Container>
+    </Box>
   );
 }
 

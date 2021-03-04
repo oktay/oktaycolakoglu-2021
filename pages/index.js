@@ -1,75 +1,25 @@
-import {
-  Container,
-  Heading,
-  Link,
-  Text,
-  Tabs,
-  TabList,
-  Tab,
-  TabPanels,
-  TabPanel,
-  useColorMode,
-} from '@chakra-ui/react';
-import { BiStar, BiBookmark, BiGitBranch } from 'react-icons/bi';
-import Head from 'next/head';
+import { groupBy } from 'lodash';
+import parseISO from 'date-fns/parseISO';
+import format from 'date-fns/format';
+
+import SEO from '@comp/seo';
 import Layout from '@comp/layout';
-import Experiences from '@comp/experiences';
-import Repos from '@comp/repos';
+import Hero from '@comp/hero';
+import Tabs from '@comp/tabs';
+import Contact from '@comp/contact';
+
 import { getExperiences } from '@lib/contentful';
 import { getRepos } from '@lib/github';
+import { getBookmarks } from '@lib/raindrops';
 
-export default function Home({ experiences, repos }) {
-  const { colorMode, toggleColorMode } = useColorMode();
+export default function Home({ experiences, repos, bookmarks, playlists }) {
   return (
     <div>
-      <Head>
-        <title>Oktay Çolakoğlu</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Frontend developer who lives in Istanbul, Graphic Designer and UI Design enthusiast. Currently frontend team lead at Akinon"
-        />
-      </Head>
-
+      <SEO />
       <Layout>
-        <Container maxWidth="container.lg" mt="56">
-          <Heading as="h1">Hello I'm Oktay 🖐</Heading>
-          <Heading as="p" maxWidth="container.md" mt="4" color="GrayText">
-            Frontend developer who lives in Istanbul, Graphic Designer and UI Design enthusiast.
-            Currently frontend team lead at{' '}
-            <Link
-              href="https://akinon.com"
-              color={colorMode === 'light' ? 'black' : 'white'}
-              textDecoration="underline"
-              isExternal
-            >
-              Akinon
-            </Link>
-          </Heading>
-
-          <Tabs variant="soft-rounded" mt="36" colorScheme="yellow">
-            <TabList>
-              <Tab fontWeight="medium">
-                <BiStar /> <Text ml="2">Experiences</Text>
-              </Tab>
-              <Tab fontWeight="medium">
-                <BiGitBranch /> <Text ml="2">Repostroies</Text>
-              </Tab>
-              <Tab fontWeight="medium">
-                <BiBookmark /> <Text ml="2">Bookmarks</Text>
-              </Tab>
-            </TabList>
-            <TabPanels py="8">
-              <TabPanel>
-                <Experiences experiences={experiences} />
-              </TabPanel>
-              <TabPanel>
-                <Repos repos={repos} />
-              </TabPanel>
-              <TabPanel>Bookmarks</TabPanel>
-            </TabPanels>
-          </Tabs>
-        </Container>
+        <Hero />
+        <Tabs experiences={experiences} repos={repos} bookmarks={bookmarks} />
+        <Contact />
       </Layout>
     </div>
   );
@@ -83,11 +33,16 @@ export async function getStaticProps() {
     return dateB - dateA;
   });
   const repos = await getRepos();
+  const bookmarks = await getBookmarks();
+  const bookmarksGrouped = groupBy(bookmarks, (item) => {
+    return format(parseISO(item.created), 'd MMMM yyyy');
+  });
 
   return {
     props: {
       experiences: sortedExperiences,
       repos,
+      bookmarks: bookmarksGrouped,
     },
     revalidate: 600,
   };
