@@ -39,7 +39,7 @@ export default function Home({ experiences, repos }) {
             Currently frontend team lead at{' '}
             <Link
               href="https://akinon.com"
-              color={colorMode === 'light' ? 'black' : 'HighlightText'}
+              color={colorMode === 'light' ? 'black' : 'white'}
               textDecoration="underline"
               isExternal
             >
