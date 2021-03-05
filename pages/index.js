@@ -8,11 +8,9 @@ import Hero from '@comp/hero';
 import Tabs from '@comp/tabs';
 import Contact from '@comp/contact';
 
-import { getExperiences } from '@lib/contentful';
-import { getRepos } from '@lib/github';
-import { getBookmarks } from '@lib/raindrops';
+import { getExperiences, getBookmarks, getRepos } from '@lib/data';
 
-export default function Home({ experiences, repos, bookmarks, playlists }) {
+export default function Home({ experiences, repos, bookmarks }) {
   return (
     <div>
       <SEO />
