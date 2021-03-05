@@ -1,30 +1,7 @@
-const { Container, Heading, Link, Stack, IconButton } = require('@chakra-ui/react');
-
-import { FaTwitter, FaLinkedin, FaGithub, FaDribbble } from 'react-icons/fa';
+import { Container, Heading, Link, Stack, IconButton } from '@chakra-ui/react';
+import { socials } from '@lib/socials';
 
 function Contact() {
-  const socials = [
-    {
-      label: 'Twitter',
-      url: 'https://twitter.com/oktaycolakoglu',
-      icon: <FaTwitter />,
-    },
-    {
-      label: 'Linkedin',
-      url: 'https://tr.linkedin.com/in/oktaycolakoglu',
-      icon: <FaLinkedin />,
-    },
-    {
-      label: 'Github',
-      url: 'https://github.com/oktay',
-      icon: <FaGithub />,
-    },
-    {
-      label: 'Dribbble',
-      url: 'https://dribbble.com/oktaycolakoglu',
-      icon: <FaDribbble />,
-    },
-  ];
   return (
     <Container maxWidth="container.lg" mt="36">
       <Heading as="h3" size="lg">

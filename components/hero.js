@@ -4,7 +4,7 @@ function Hero() {
   const { colorMode } = useColorMode();
 
   return (
-    <Container maxWidth="container.lg" mt="56">
+    <Container as="article" maxWidth="container.lg" mt="56">
       <Heading as="h1">Hello I'm Oktay 🖐</Heading>
       <Heading as="p" maxWidth="container.md" mt="4" color="GrayText">
         Frontend developer who lives in Istanbul, also Graphic Designer and UI Design enthusiast.

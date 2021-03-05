@@ -2,7 +2,7 @@ const { Container, Text, Link } = require('@chakra-ui/react');
 
 function Footer() {
   return (
-    <Container py="4" mt="36" color="GrayText">
+    <Container as="footer" py="4" mt="36" color="GrayText">
       <Text align="center" fontSize="sm">
         &copy; 2021 Oktay Çolakoğlu
       </Text>

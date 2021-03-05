@@ -14,29 +14,14 @@ import {
 } from '@chakra-ui/react';
 import { BiLinkExternal, BiSun, BiMoon, BiChevronDown } from 'react-icons/bi';
 import RouterLink from 'next/link';
+import { socials } from '@lib/socials';
 
 function Header() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const menu = [
-    {
-      url: 'https://github.com/oktay',
-      label: 'Github',
-    },
-    {
-      url: 'https://twitter.com/oktaycolakoglu',
-      label: 'Twitter',
-    },
-    {
-      url: 'https://www.linkedin.com/in/oktaycolakoglu/',
-      label: 'Linkedin',
-    },
-    {
-      url: 'https://dribbble.com/oktaycolakoglu',
-      label: 'Dribbble',
-    },
-  ];
+
   return (
     <Box
+      as="header"
       position="sticky"
       top="0"
       bg={colorMode === 'dark' ? '#13141a' : '#fff'}
@@ -60,7 +45,7 @@ function Header() {
                 <Flex alignItems="center">Home</Flex>
               </MenuItem>
             </RouterLink>
-            {menu.map(({ url, label }) => (
+            {socials.map(({ url, label }) => (
               <MenuItem as={Link} href={url} key={url} icon={<BiLinkExternal />} isExternal>
                 {label}
               </MenuItem>

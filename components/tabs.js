@@ -13,19 +13,19 @@ function HomeTabs({ experiences, repos, bookmarks }) {
     <Container maxWidth="container.lg" mt="36">
       <Tabs variant="soft-rounded" colorScheme="yellow" onChange={(index) => setTabIndex(index)}>
         <TabList>
-          <Tab fontWeight="medium">
+          <Tab fontWeight="medium" aria-label="Experiences">
             <BiStar />{' '}
             <Text ml="2" display={{ base: tabIndex === 0 ? 'block' : 'none', md: 'block' }}>
               Experiences
             </Text>
           </Tab>
-          <Tab fontWeight="medium">
+          <Tab fontWeight="medium" aria-label="Repositories">
             <BiGitBranch />{' '}
             <Text ml="2" display={{ base: tabIndex === 1 ? 'block' : 'none', md: 'block' }}>
               Repositories
             </Text>
           </Tab>
-          <Tab fontWeight="medium">
+          <Tab fontWeight="medium" aria-label="Bookmarks">
             <BiBookmark />{' '}
             <Text ml="2" display={{ base: tabIndex === 2 ? 'block' : 'none', md: 'block' }}>
               Bookmarks
