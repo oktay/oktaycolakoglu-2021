@@ -6,7 +6,7 @@ import Experiences from '@comp/experiences';
 import Repos from '@comp/repos';
 import Bookmarks from '@comp/bookmarks';
 
-function HomeTabs({ experiences, repos, bookmarks }) {
+function HomeTabs({ contents }) {
   const [tabIndex, setTabIndex] = useState(0);
 
   return (
@@ -34,13 +34,13 @@ function HomeTabs({ experiences, repos, bookmarks }) {
         </TabList>
         <TabPanels py="8">
           <TabPanel padding={{ base: '0', md: '1' }}>
-            <Experiences experiences={experiences} />
+            <Experiences experiences={contents.experiences} />
           </TabPanel>
           <TabPanel padding={{ base: '0', md: '1' }}>
-            <Repos repos={repos} />
+            <Repos repos={contents.repos} />
           </TabPanel>
           <TabPanel padding={{ base: '0', md: '1' }}>
-            <Bookmarks bookmarks={bookmarks} />
+            <Bookmarks bookmarks={contents.bookmarks} />
           </TabPanel>
         </TabPanels>
       </Tabs>

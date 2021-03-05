@@ -10,13 +10,13 @@ import Contact from '@comp/contact';
 
 import { getExperiences, getBookmarks, getRepos } from '@lib/data';
 
-export default function Home({ experiences, repos, bookmarks }) {
+export default function Home({ data }) {
   return (
     <div>
       <SEO />
       <Layout>
         <Hero />
-        <Tabs experiences={experiences} repos={repos} bookmarks={bookmarks} />
+        <Tabs contents={data} />
         <Contact />
       </Layout>
     </div>
@@ -38,9 +38,11 @@ export async function getStaticProps() {
 
   return {
     props: {
-      experiences: sortedExperiences,
-      repos,
-      bookmarks: bookmarksGrouped,
+      data: {
+        experiences: sortedExperiences,
+        repos,
+        bookmarks: bookmarksGrouped,
+      },
     },
     revalidate: 600,
   };
