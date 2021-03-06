@@ -40,7 +40,7 @@ function RepoCard({ repo }) {
     <Box
       key={repo.id}
       boxShadow="xs"
-      p={{ base: 2, md: 6 }}
+      p={{ base: 4, md: 6 }}
       bg="whiteAlpha.50"
       border="GrayText"
       borderRadius="md"
