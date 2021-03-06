@@ -1,4 +1,15 @@
-import { Box, Heading, Image, Stack, Text, Grid, Link, AspectRatio, Badge } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  Image,
+  Stack,
+  Text,
+  Grid,
+  Link,
+  AspectRatio,
+  Badge,
+  StackDivider,
+} from '@chakra-ui/react';
 import { formatDistanceToNowStrict, parseISO } from 'date-fns';
 
 function BookmarkCard({ bookmark }) {
@@ -14,13 +25,16 @@ function BookmarkCard({ bookmark }) {
             height="100%"
             objectFit="cover"
             borderRadius="md"
+            transition="opacity 150ms ease-out"
+            _hover={{ opacity: 0.6 }}
           />
         </Link>
       </AspectRatio>
       <Box>
-        <Text color="GrayText">
-          {bookmark.domain} - {date}
-        </Text>
+        <Stack direction="row" divider={<StackDivider />}>
+          <Text color="GrayText">{bookmark.domain}</Text>
+          <Text color="GrayText">{date}</Text>
+        </Stack>
         <Heading as={Link} href={bookmark.link} size="md" mt="2" noOfLines={2} isExternal>
           {bookmark.title}
         </Heading>
@@ -41,7 +55,7 @@ function BookmarkCard({ bookmark }) {
 
 function Bookmarks({ bookmarks }) {
   return (
-    <Stack spacing="16">
+    <Stack spacing="16" divider={<StackDivider />}>
       {Object.keys(bookmarks).map((date) => {
         return (
           <Box key={date}>
