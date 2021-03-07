@@ -27,6 +27,7 @@ function BookmarkCard({ bookmark }) {
             borderRadius="md"
             transition="opacity 150ms ease-out"
             _hover={{ opacity: 0.6 }}
+            loading="lazy"
           />
         </Link>
       </AspectRatio>
